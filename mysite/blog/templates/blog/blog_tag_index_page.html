@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+    {% if request.GET.tag|length %}
+        <h2>Pages found for the chosen tag "<i>{{ request.GET.tag }}</i>":</h2>
+    {% endif %}
+
+    {% for blogpage in blogpages %}
+        <p><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></p>
+        <p>{{ blogpage.intro }}</p>
+        <p>Created: {{ blogpage.date }}</p>
+        <br>
+    {% endfor %}
+
+
+
+{% endblock %}
